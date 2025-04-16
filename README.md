@@ -27,4 +27,5 @@ A simple command-line based Todo Manager written in Python to help manage tasks 
 MyPythonProject/ ├── data/ │ └── todos.json ├── src/ │ └── mytodomanager.py └── README.md
 note-    Make sure todos.json exists in the data/ folder. If not, the program will create it on first run.
 
+![Flowchart](images/flowchart.png)
 
