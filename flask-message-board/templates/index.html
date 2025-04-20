@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Board</title>
+</head>
+<body>
+
+    <!-- Main Heading -->
+    <h1>Submit your message</h1>
+
+    <!-- FLASH MESSAGES SECTION -->
+    <!-- This block displays flash messages (e.g., success or error messages from the server) -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li> <!-- Display each flash message inside a list item -->
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- FORM SECTION -->
+    <!-- This form sends user input (message content) to the Flask server -->
+    <!-- method="POST" means it sends data securely in the request body -->
+    <!-- action="/add" tells the form to send data to the /add route in app.py -->
+    <form method="POST" action="/add">
+        <!-- Label for the input field -->
+        <label for="content">Message:</label>
+
+        <!-- Input field where the user types the message -->
+        <!-- id="content" and name="content" must match the key expected in Flask's request.form -->
+        <!-- required means the form cannot be submitted without typing something -->
+        <input type="text" id="content" name="content" required>
+
+        <!-- Submit button to send the form -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- EXISTING MESSAGES SECTION -->
+    <h2>Existing Messages</h2>
+
+    <!-- This unordered list displays all messages stored in the database -->
+    <!-- It loops over the 'messages' list passed from the Flask backend -->
+    <ul>
+        {% for message in messages %}
+            <li>{{ message[1] }}</li> <!-- Display only the content of each message (second column in DB row) -->
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+Copyright (c) 2025 Shashank
+
+You may not copy, modify, distribute, or use this code for any purpose without express written permission from the author.
+
+
+
+[
+    {
+        "title": "Sample Todo Item",
+        "description": "This is sample that comes with the app.You can add more looking at the swagger docs.",
+        "doneStatus": false,
+        "id": "8af52e54045b423aabaa9bcf7003ff4d"
+    },
+    {
+        "title": "Integration Happy Path.",
+        "description": "This is created using automated Integration tests.",
+        "doneStatus": false,
+        "id": "7f3d774efcad4dcbbccd891c2b121860"
+    }
+]
