@@ -30,4 +30,5 @@ flask-message-board/
 │   └── index.html      # Main page for submitting and viewing messages
 └── README.md           # Project documentation
 
+the url to look for frontend-http://127.0.0.1:5000/
 
