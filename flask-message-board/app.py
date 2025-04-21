@@ -72,6 +72,7 @@ def add():
 
     except KeyError:
         print("Form field 'content' is missing.")  # Specific error if form input is not found
+        #HTML form doesn't contain a field named content — a common scenario when users submit empty forms 
         flash("There was a problem with your form submission.")
         return redirect('/')
 
