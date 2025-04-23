@@ -1,6 +1,6 @@
-Copyright (c) 2025 Shashank
+#Copyright (c) 2025 Shashank
 
-You may not copy, modify, distribute, or use this code for any purpose without express written permission from the author.
+#You may not copy, modify, distribute, or use this code for any purpose without express written permission from the author.
 
 
 import json
