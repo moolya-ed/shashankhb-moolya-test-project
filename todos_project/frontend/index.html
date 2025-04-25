@@ -126,7 +126,7 @@
             <input type="text" id="viewTodoId" class="input-field" placeholder="Todo ID"><br>
             <button class="button" onclick="viewTodoById()">View Todo</button><br>
 
-            <div id="viewTodoResult"></div> <!-- This will display the result of the view action -->
+            <div id="viewTodoResult"></div>
         </div>
 
         <hr>
@@ -152,7 +152,7 @@
             <h2 class="section-title">View All Todos</h2>
             <button class="button" onclick="viewAllTodos()">View All Todos</button>
 
-            <div id="todosList" class="todo-list"></div> <!-- This will display all todos -->
+            <div id="todosList" class="todo-list"></div>
         </div>
 
         <!-- Save Changes Notification -->
@@ -162,10 +162,11 @@
     </div>
 
     <script>
-        const apiUrl = "http://127.0.0.1:8000"; // Adjust to your FastAPI backend URL
+        const apiUrl = "http://127.0.0.1:8000";
         let todos = [];
+        const TODOS_PER_PAGE = 8;
+        let currentPage = 1;
 
-        // Add Todo
         function addTodo() {
             const title = document.getElementById("addTitle").value;
             const description = document.getElementById("addDescription").value;
@@ -173,19 +174,16 @@
 
             fetch(`${apiUrl}/add_todo`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(todo)
             })
             .then(response => response.json())
             .then(data => {
                 alert("Todo added successfully!");
-                viewAllTodos(); // Refresh todos after adding
+                viewAllTodos();
             });
         }
 
-        // Show update fields when a valid ID is entered
         function showUpdateFields() {
             const todoId = document.getElementById("updateTodoId").value;
             if (todoId) {
@@ -195,33 +193,27 @@
             }
         }
 
-        // Update Todo
         function updateTodo() {
             const id = document.getElementById("updateTodoId").value;
             const title = document.getElementById("updateTitle").value;
             const description = document.getElementById("updateDescription").value;
             const doneStatus = document.getElementById("updateDoneStatus").value.toLowerCase() === "true";
-
             const updatedTodo = { title, description, doneStatus };
 
             fetch(`${apiUrl}/update_todo/${id}`, {
                 method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedTodo)
             })
             .then(response => response.json())
             .then(data => {
                 alert("Todo updated successfully!");
-                viewAllTodos(); // Refresh todos after updating
+                viewAllTodos();
             });
         }
 
-        // View Todo by ID
         function viewTodoById() {
             const todoId = document.getElementById("viewTodoId").value;
-
             fetch(`${apiUrl}/todo/${todoId}`)
             .then(response => response.json())
             .then(data => {
@@ -240,56 +232,73 @@
             });
         }
 
-        // Delete Todo
         function deleteTodo() {
             const todoId = document.getElementById("deleteTodoId").value;
-
             fetch(`${apiUrl}/remove_todo/${todoId}`, {
                 method: "DELETE"
             })
             .then(response => response.json())
             .then(data => {
                 alert("Todo deleted successfully!");
-                viewAllTodos(); // Refresh todos after deletion
+                viewAllTodos();
             });
         }
 
-        // Save Changes
         function saveChanges() {
-            console.log('Save Changes button clicked');  // Debugging line
+            console.log('Save Changes button clicked');
             showNotification();
         }
 
-        // Show notification
         function showNotification() {
-            console.log('Showing notification'); // Debugging line
+            console.log('Showing notification');
             const notification = document.getElementById("notification");
             notification.style.display = "block";
-
             setTimeout(() => {
                 notification.style.display = "none";
             }, 2000);
         }
 
-        // View All Todos
+        function paginateTodos(page = 1) {
+            currentPage = page;
+            const todosList = document.getElementById("todosList");
+            todosList.innerHTML = "";
+
+            const start = (page - 1) * TODOS_PER_PAGE;
+            const end = start + TODOS_PER_PAGE;
+            const paginatedTodos = todos.slice(start, end);
+
+            paginatedTodos.forEach(todo => {
+                todosList.innerHTML += `
+                    <div class="todo-item">
+                        <p><strong>ID:</strong> ${todo.id}</p>
+                        <p><strong>Title:</strong> ${todo.title}</p>
+                        <p><strong>Description:</strong> ${todo.description}</p>
+                        <p><strong>Status:</strong> ${todo.doneStatus ? "True" : "False"}</p>
+                    </div>
+                `;
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(todos.length / TODOS_PER_PAGE);
+            let paginationHtml = `<div style="text-align:center; margin-top:20px;">`;
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHtml += `<button onclick="paginateTodos(${i})" class="button" style="margin: 0 5px; background-color: ${i === currentPage ? '#004d40' : '#00796b'}">${i}</button>`;
+            }
+
+            paginationHtml += `</div>`;
+            document.getElementById("todosList").innerHTML += paginationHtml;
+        }
+
         function viewAllTodos() {
             fetch(`${apiUrl}/todos`)
             .then(response => response.json())
             .then(data => {
                 todos = data;
-                const todosList = document.getElementById("todosList");
-                todosList.innerHTML = "";
-
-                data.forEach(todo => {
-                    todosList.innerHTML += `
-                        <div class="todo-item">
-                            <p><strong>ID:</strong> ${todo.id}</p>
-                            <p><strong>Title:</strong> ${todo.title}</p>
-                            <p><strong>Description:</strong> ${todo.description}</p>
-                            <p><strong>Status:</strong> ${todo.doneStatus ? "True" : "False"}</p>
-                        </div>
-                    `;
-                });
+                paginateTodos(1);
             });
         }
     </script>
