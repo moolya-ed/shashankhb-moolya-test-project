@@ -1,0 +1,163 @@
+2025-04-16 16:04:20,950 - INFO -  Loaded 2 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-23 11:12:23,587 - INFO -  Loaded 2 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-23 11:12:23,588 - INFO -  Found todo with ID 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-23 12:06:18,504 - INFO -  Loaded 2 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-23 12:34:50,238 - INFO -  Loaded 2 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-23 12:34:50,238 - INFO -  Saved 3 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-23 12:34:50,238 - INFO -  Added new todo: {'id': '73db960b4acd441883dd6883d4957380', 'title': 'sleep', 'description': 'take a nap', 'doneStatus': False}
+2025-04-23 12:34:58,258 - INFO -  Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,662 - INFO - Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Added new todo: {'id': '60baa2a9f32446a3beaf477ccf26804a', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': True}
+2025-04-24 12:02:37,663 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Updated todo with ID 60baa2a9f32446a3beaf477ccf26804a: {'title': 'Updated Task', 'description': 'Updated description', 'doneStatus': True}
+2025-04-24 12:02:37,663 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Todo with ID 60baa2a9f32446a3beaf477ccf26804a has been updated.
+2025-04-24 12:02:37,663 - INFO - Update successful for todo ID 60baa2a9f32446a3beaf477ccf26804a
+2025-04-24 12:02:37,663 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Saved 3 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:02:37,663 - INFO - Removed todo with ID 60baa2a9f32446a3beaf477ccf26804a
+2025-04-24 12:02:37,664 - INFO - Removal successful for todo ID 60baa2a9f32446a3beaf477ccf26804a
+2025-04-24 12:07:34,425 - INFO - Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,425 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,425 - INFO - Added new todo: {'id': '871e2c8110f84895ae939aa41081784c', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:07:34,425 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,425 - INFO - Updated todo with ID 871e2c8110f84895ae939aa41081784c: {'title': 'Updated Task', 'description': 'Updated description', 'doneStatus': True}
+2025-04-24 12:07:34,426 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,426 - INFO - Todo with ID 871e2c8110f84895ae939aa41081784c has been updated.
+2025-04-24 12:07:34,426 - INFO - Update successful for todo ID 871e2c8110f84895ae939aa41081784c
+2025-04-24 12:07:34,426 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,426 - INFO - Saved 3 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:07:34,426 - INFO - Removed todo with ID 871e2c8110f84895ae939aa41081784c
+2025-04-24 12:07:34,426 - INFO - Removal successful for todo ID 871e2c8110f84895ae939aa41081784c
+2025-04-24 12:08:49,424 - INFO - Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,424 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,424 - INFO - Added new todo: {'id': 'a252c986c36841949401c72c0e3ea608', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:08:49,424 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,424 - INFO - Updated todo with ID a252c986c36841949401c72c0e3ea608: {'title': 'Updated Task', 'description': 'Updated description', 'doneStatus': True}
+2025-04-24 12:08:49,425 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,425 - INFO - Todo with ID a252c986c36841949401c72c0e3ea608 has been updated.
+2025-04-24 12:08:49,425 - INFO - Update successful for todo ID a252c986c36841949401c72c0e3ea608
+2025-04-24 12:08:49,425 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,425 - INFO - Saved 3 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:08:49,425 - INFO - Removed todo with ID a252c986c36841949401c72c0e3ea608
+2025-04-24 12:08:49,426 - INFO - Removal successful for todo ID a252c986c36841949401c72c0e3ea608
+2025-04-24 12:12:15,796 - INFO - Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:12:15,796 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:12:15,796 - INFO - Added new todo: {'id': '71f6358e8c714e6d8413f142832910d5', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:12:15,796 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:12:15,797 - INFO - Saved 3 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:12:15,797 - INFO - Removed todo with ID 7f3d774efcad4dcbbccd891c2b121860
+2025-04-24 12:12:15,797 - INFO - Removal successful for todo ID 7f3d774efcad4dcbbccd891c2b121860
+2025-04-24 12:14:30,496 - INFO - Loaded 3 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:14:30,496 - INFO - Saved 4 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:14:30,496 - INFO - Added new todo: {'id': 'b7c239e74af543cc80010cfa00069bcf', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:17:18,847 - INFO - Loaded 4 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:17:18,848 - INFO - Saved 5 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:17:18,848 - INFO - Added new todo: {'id': '2458ffa0d04543889bde2c25eef20504', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:17:30,306 - INFO - Loaded 5 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:17:30,306 - INFO - Saved 6 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:17:30,306 - INFO - Added new todo: {'id': '20a7f6c16a374f95b2fd6c8af038ab92', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:19:14,321 - INFO - Loaded 6 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:19:14,321 - INFO - Saved 7 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:19:14,321 - INFO - Added new todo: {'id': '330a4eea128a46b1832c21f8a532b289', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:19:14,321 - INFO - Todo added with ID: 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:19:23,806 - INFO - User entered Todo ID to get details: 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:19:23,806 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:19:23,807 - INFO - Found todo with ID 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:19:23,807 - INFO - Todo details fetched: {'id': '330a4eea128a46b1832c21f8a532b289', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:19:40,795 - INFO - User entered Todo ID to remove: 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:19:40,795 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:19:40,796 - INFO - Saved 6 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:19:40,796 - INFO - Removed todo with ID 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:19:40,797 - INFO - Removal successful for Todo ID 330a4eea128a46b1832c21f8a532b289
+2025-04-24 12:34:31,880 - INFO - Loaded 6 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:34:31,880 - INFO - Saved 7 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:34:31,880 - INFO - Added new todo: {'id': '2b02bc72aa8d418bbb30abd15de03977', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 12:34:31,880 - INFO - Todo added with ID: 2b02bc72aa8d418bbb30abd15de03977
+2025-04-24 12:34:47,095 - INFO - User entered Todo ID to get details: 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:34:47,096 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:34:47,096 - INFO - Found todo with ID 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:34:47,096 - INFO - Todo details fetched: {'title': 'Sample Todo Item', 'description': 'This is sample that comes with the app.You can add more looking at the swagger docs.', 'doneStatus': False, 'id': '8af52e54045b423aabaa9bcf7003ff4d'}
+2025-04-24 12:34:53,280 - INFO - User entered Todo ID to update: 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:35:08,543 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:35:08,543 - INFO - Updated todo with ID 8af52e54045b423aabaa9bcf7003ff4d: {'title': 'sleep', 'description': 'take a break', 'doneStatus': False}
+2025-04-24 12:35:08,543 - INFO - Saved 7 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:35:08,543 - INFO - Todo with ID 8af52e54045b423aabaa9bcf7003ff4d has been updated.
+2025-04-24 12:35:08,543 - INFO - Update successful for Todo ID 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:35:13,845 - INFO - User entered Todo ID to remove: 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:35:13,846 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:35:13,866 - INFO - Saved 6 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/../data/todos.json
+2025-04-24 12:35:13,867 - INFO - Removed todo with ID 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:35:13,867 - INFO - Removal successful for Todo ID 8af52e54045b423aabaa9bcf7003ff4d
+2025-04-24 12:51:06,006 - WARNING - File '/home/admin/PyCharmMiscProject/MyPythonProject/src/todos.json' not found. Returning an empty list.
+2025-04-24 12:51:06,006 - INFO - Saved 1 todos to /home/admin/PyCharmMiscProject/MyPythonProject/src/todos.json
+2025-04-24 12:51:06,006 - INFO - Added new todo: {'id': '1e4b8dc9a746430395c625968f1cea06', 'title': 'laugh', 'description': 'please laugh', 'doneStatus': False}
+2025-04-24 12:51:06,006 - INFO - Todo added with ID: 1e4b8dc9a746430395c625968f1cea06
+2025-04-24 13:36:14,639 - INFO - Loaded 1 todos from /home/admin/PyCharmMiscProject/MyPythonProject/src/todos.json
+2025-04-24 13:42:52,525 - INFO - Loaded 6 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:42:52,526 - INFO - Saved 7 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:42:52,526 - INFO - Added new todo: {'id': '70845134-fb5e-4330-a4ac-be016a521ffc', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 13:42:52,526 - INFO - Todo added with ID: 70845134-fb5e-4330-a4ac-be016a521ffc
+2025-04-24 13:42:52,526 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:42:52,526 - WARNING - No todo found with ID abc123...
+2025-04-24 13:42:52,526 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:42:52,526 - WARNING - No todo found with ID abc123...
+2025-04-24 13:42:52,526 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:42:52,526 - WARNING - No todo found with ID abc123...
+2025-04-24 13:45:24,866 - INFO - Loaded 7 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:45:24,867 - INFO - Saved 8 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:45:24,867 - INFO - Added new todo: {'id': '95f39cb2-6a9c-4019-a4e8-fc429b991cee', 'title': 'say hi', 'description': 'hi everyone', 'doneStatus': False}
+2025-04-24 13:45:24,867 - INFO - Todo added with ID: 95f39cb2-6a9c-4019-a4e8-fc429b991cee
+2025-04-24 13:54:32,520 - INFO - Loaded 8 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:54:32,522 - INFO - Saved 9 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:54:32,522 - INFO - Added new todo: {'id': '0b23cfcb-4041-4b22-ad2b-b5339db4766c', 'title': 'learn', 'description': 'learn new', 'doneStatus': False}
+2025-04-24 13:54:32,523 - INFO - Todo added with ID: 0b23cfcb-4041-4b22-ad2b-b5339db4766c
+2025-04-24 13:54:32,523 - INFO - Saved 9 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:58:57,230 - INFO - Loaded 9 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:58:57,232 - INFO - Saved 10 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 13:58:57,233 - INFO - Added new todo: {'id': 'b0b33c8a-7831-4a49-a172-f47b9567d6d2', 'title': 'say bye', 'description': 'byebye', 'doneStatus': False}
+2025-04-24 13:58:57,233 - INFO - Todo added with ID: b0b33c8a-7831-4a49-a172-f47b9567d6d2
+2025-04-24 14:38:59,122 - INFO - Loaded 10 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:38:59,124 - INFO - Saved 11 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:38:59,124 - INFO - Added new todo: {'id': 'ac46698a-6a6f-41c7-968a-618b7468cc3a', 'title': 'im done', 'description': 'done for a day', 'doneStatus': False}
+2025-04-24 14:38:59,125 - INFO - Todo added with ID: ac46698a-6a6f-41c7-968a-618b7468cc3a
+2025-04-24 14:42:58,182 - INFO - Loaded 11 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:42:58,184 - INFO - Saved 12 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:42:58,184 - INFO - Added new todo: {'id': '004e92d1-215c-48bf-94b2-928063519ba8', 'title': 'learn python', 'description': 'python begining', 'doneStatus': False}
+2025-04-24 14:42:58,184 - INFO - Todo added with ID: 004e92d1-215c-48bf-94b2-928063519ba8
+2025-04-24 14:43:39,780 - INFO - Loaded 12 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:39,780 - WARNING - No todo found with ID home/admin/PyCharmMiscProject/.venv/bin/python /home/admin/PyCharmMiscProject/MyPythonProject/src/mytodomanage.py 
+2025-04-24 14:43:39,780 - INFO - Loaded 12 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:39,780 - WARNING - No todo found with ID Enter title for the new todo: learn python
+2025-04-24 14:43:39,780 - INFO - Loaded 12 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:39,780 - WARNING - No todo found with ID 2025-04-24 14:42:58,184 - INFO - Saved 12 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:55,501 - INFO - Loaded 12 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:55,503 - INFO - Saved 13 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:43:55,503 - INFO - Added new todo: {'id': 'ff026f81-570c-4993-a2b6-1be3a9b6ed33', 'title': 'test', 'description': 'tasl test', 'doneStatus': False}
+2025-04-24 14:43:55,503 - INFO - Todo added with ID: ff026f81-570c-4993-a2b6-1be3a9b6ed33
+2025-04-24 14:44:04,149 - INFO - Loaded 13 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:44:04,150 - INFO - Found todo with ID 20a7f6c16a374f95b2fd6c8af038ab92
+2025-04-24 14:44:04,150 - INFO - Todo details: {'id': '20a7f6c16a374f95b2fd6c8af038ab92', 'title': 'Test Task', 'description': 'This is just a test task', 'doneStatus': False}
+2025-04-24 14:44:29,253 - INFO - Loaded 13 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:44:29,255 - INFO - Saved 13 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:44:29,255 - INFO - Updated todo with ID 20a7f6c16a374f95b2fd6c8af038ab92: {'id': '20a7f6c16a374f95b2fd6c8af038ab92', 'title': 'just leave', 'description': 'left npow', 'doneStatus': False}
+2025-04-24 14:44:29,255 - INFO - Todo with ID 20a7f6c16a374f95b2fd6c8af038ab92 has been updated.
+2025-04-24 14:44:33,213 - INFO - Loaded 13 todos from /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:44:33,214 - INFO - Saved 12 todos to /home/admin/PyCharmMiscProject/MyPythonProject/data/todos.json
+2025-04-24 14:44:33,215 - INFO - Removed todo with ID 20a7f6c16a374f95b2fd6c8af038ab92
+2025-04-25 09:14:52,713 - WARNING - Todo file not found. Creating a new one.
+2025-04-25 09:15:07,710 - INFO - Todos saved successfully.
+2025-04-25 09:15:07,710 - INFO - Added new todo: 7027f49153d446d2affc227a68d9ebe5
+2025-04-25 09:17:57,794 - WARNING - Todo file not found. Creating a new one.
+2025-04-25 09:18:09,319 - INFO - Todos saved successfully.
+2025-04-25 09:18:09,319 - INFO - Added new todo: ebb4e411ed024331b4cd4d0f44ff3f24
+2025-04-25 09:23:00,098 - INFO - Todos loaded successfully.
+2025-04-25 09:23:17,168 - INFO - Todos saved successfully.
+2025-04-25 09:23:17,168 - INFO - Added new todo: 5794af6839c149ad800eb41853f06b61
+2025-04-25 09:23:33,557 - INFO - Viewed todo: 5794af6839c149ad800eb41853f06b61
+2025-04-25 09:23:53,902 - INFO - Todos saved successfully.
+2025-04-25 09:23:53,902 - INFO - Updated todo: 5794af6839c149ad800eb41853f06b61
+2025-04-25 09:24:17,796 - INFO - Todos saved successfully.
+2025-04-25 09:24:17,796 - INFO - Removed todo: eff2cb7308db4564ae5adf8699392665
+2025-04-25 09:24:17,817 - INFO - Todos saved successfully.
