@@ -1,0 +1,104 @@
+[
+    {
+        "title": "Sample Todo Item",
+        "description": "This is sample that comes with the app.You can add more looking at the swagger docs.",
+        "doneStatus": false,
+        "id": "8af52e54045b423aabaa9bcf7003ff4d"
+    },
+    {
+        "title": "Integration Happy Path.",
+        "description": "This is created using automated Integration tests.",
+        "doneStatus": false,
+        "id": "7f3d774efcad4dcbbccd891c2b121860"
+    },
+    {
+        "id": "74663566fded40a1a74b164825c92638",
+        "title": "do something",
+        "description": "read and write",
+        "doneStatus": false
+    },
+    {
+        "id": "06c77aa9a7eb4d9087a60d8394fc48fa",
+        "title": "sleep",
+        "description": "take a nap",
+        "doneStatus": false
+    },
+    {
+        "id": "747b6788f5b54c3d8cfb3c313b1414c7",
+        "title": "walk",
+        "description": "went walk",
+        "doneStatus": false
+    },
+    {
+        "id": "5794af6839c149ad800eb41853f06b61",
+        "title": "listening",
+        "description": "listen",
+        "doneStatus": false
+    },
+    {
+        "title": "web check",
+        "description": "checking",
+        "doneStatus": false,
+        "id": "78b4d8d0bfab48b5939329dba94bc3c8"
+    },
+    {
+        "title": "Read a book",
+        "description": "Finish the second chapter of 'Clean Code'",
+        "doneStatus": false,
+        "id": "1ce5d04938db42abbc8c20714744daa9"
+    },
+    {
+        "title": "Write FastAPI docs",
+        "description": "Complete the API documentation section for the project",
+        "doneStatus": false,
+        "id": "ae19f0e31886450890a870f9b23500a2"
+    },
+    {
+        "title": "postman add",
+        "description": "postman checking",
+        "doneStatus": false,
+        "id": "d1bfad8e04ac490694d7c3181fc45f5f"
+    },
+    {
+        "title": "Finish project report",
+        "description": "Prepare the final slides and summary.",
+        "doneStatus": false,
+        "id": "72122680a84c4bc4881a0e60156457d4"
+    },
+    {
+        "title": "Updated Title",
+        "description": "Updated description",
+        "doneStatus": true,
+        "id": "dc2fc62a5bf1457d857720fc32abb217"
+    },
+    {
+        "title": "web todo",
+        "description": "checking frontend",
+        "doneStatus": false,
+        "id": "14dccd77c4f4414d909b7f2766af75c4"
+    },
+    {
+        "title": "draft check",
+        "description": "checking draft",
+        "doneStatus": false,
+        "id": "d9566f421a27426d9b6482a061f1f18e"
+    },
+    {
+        "title": "popup notification",
+        "description": "notodifation chek done",
+        "doneStatus": true,
+        "id": "d6337a794a874e288f68a94148ae5fee"
+    },
+    {
+        "title": "more draft check",
+        "description": "draft1 check",
+        "doneStatus": false,
+        "id": "b204a1f996714af5b07aca2ba626c1be"
+    },
+    {
+        "title": "Write FastAPI docs check",
+        "description": "Complete the API documentationcheck section for the project",
+        "doneStatus": false,
+        "id": "c17c4979e1ca4099b5a8273b51a914a2"
+    }
+]
