@@ -1,97 +1,101 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
-from typing import Optional
-import uuid
-import json
-import os
+from fastapi import FastAPI, HTTPException  # Import FastAPI framework and HTTP error handling
+from fastapi.middleware.cors import CORSMiddleware  # Import CORS middleware
+from pydantic import BaseModel, Field  # For request validation
+from typing import Optional  # Allow optional fields in models
+import uuid  # Used to generate unique IDs
+import json  # Used for file I/O
+import os  # Used for file path operations
 
-# FastAPI instance
+# Create FastAPI instance
 app = FastAPI()
 
-# File path for storing todos
+# Set file path to JSON file storing todos
 FILE_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "todos.json")
-FILE_PATH = os.path.abspath(FILE_PATH)
+FILE_PATH = os.path.abspath(FILE_PATH)  # Convert to absolute path
 
-# Enable CORS (for frontend or Postman use)
+# Enable CORS to allow frontend or external tools like Postman to access the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Allow requests from all origins
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"]  # Allow all headers
 )
 
-# Define the data model
+# Define data model using Pydantic for validation
 class Todo(BaseModel):
-    title: str
-    description: str
-    doneStatus: bool = False
-    id: Optional[str] = Field(default=None)
+    title: str  # Title is required
+    description: str  # Description is required
+    doneStatus: bool = False  # Default status is False
+    id: Optional[str] = Field(default=None)  # ID is optional; generated if not provided
 
-# Load todos from JSON file
+# Load todos from file
 def load_todos():
-    if not os.path.exists(FILE_PATH):
+    if not os.path.exists(FILE_PATH):  # If file doesn't exist, return empty list
         return []
-    with open(FILE_PATH, "r") as f:
-        return json.load(f)
+    with open(FILE_PATH, "r") as f:  # Open file in read mode
+        return json.load(f)  # Return loaded list
 
-# Save todos to JSON file
+# Save todos to file
 def save_todos(todos):
-    with open(FILE_PATH, "w") as f:
-        json.dump(todos, f, indent=4)
+    print("Saving todos:", todos)  # Debug print for visibility
+    with open(FILE_PATH, "w") as f:  # Open file in write mode
+        json.dump(todos, f, indent=4)  # Save todos as pretty JSON
 
-# Home route
+# Home route to verify API is running
 @app.get("/")
 def read_root():
-    return {"message": "✅ API is running!"}
+    return {"message": "✅ API is running!"}  # Health check
 
-# 1️⃣ Get all todos
+# Get all todos
 @app.get("/todos")
 def get_all_todos():
-    return load_todos()
+    return load_todos()  # Return list of todos
 
-# 2️⃣ Get one todo by ID
+# Get a single todo by ID
 @app.get("/todo/{todo_id}")
 def get_todo(todo_id: str):
-    todos = load_todos()
+    todos = load_todos()  # Load all todos
     for todo in todos:
-        if todo["id"] == todo_id:
+        if todo["id"] == todo_id:  # Match by ID
             return todo
-    raise HTTPException(status_code=404, detail="Todo not found")
+    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
 
-# 3️⃣ Add a new todo
+# Add a new todo
 @app.post("/add_todo")
 def add_todo(todo: Todo):
     todos = load_todos()
+    # Check for duplicate todo by title and description
     for existing in todos:
         if existing["title"] == todo.title and existing["description"] == todo.description:
             raise HTTPException(status_code=400, detail="Todo with the same title and description already exists.")
-    todo.id = todo.id or uuid.uuid4().hex
-    todos.append(todo.dict())
-    save_todos(todos)
-    return {"message": "Todo added successfully", "todo": todo}
+    todo.id = todo.id or uuid.uuid4().hex  # Generate ID if not provided
+    todos.append(todo.dict())  # Add to list as dict
+    save_todos(todos)  # Save to file
+    return {"message": "Todo added successfully", "todo": todo}  # Return response
 
-# 4️⃣ Update an existing todo
+# Update existing todo
 @app.put("/update_todo/{todo_id}")
 def update_todo(todo_id: str, updated: Todo):
     todos = load_todos()
     for todo in todos:
-        if todo["id"] == todo_id:
+        if todo["id"] == todo_id:  # Match by ID
+            # Update fields
             todo["title"] = updated.title
             todo["description"] = updated.description
             todo["doneStatus"] = updated.doneStatus
-            save_todos(todos)
+            save_todos(todos)  # Save updated list
             return {"message": "Todo updated", "todo": todo}
-    raise HTTPException(status_code=404, detail="Todo not found")
+    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
 
-# 5️⃣ Delete a todo
+# Delete a todo
 @app.delete("/remove_todo/{todo_id}")
 def delete_todo(todo_id: str):
     todos = load_todos()
     for i, todo in enumerate(todos):
-        if todo["id"] == todo_id:
-            removed = todos.pop(i)
-            save_todos(todos)
-            return {"message": "Todo deleted", "todo": removed}
-    raise HTTPException(status_code=404, detail="Todo not found")
+        if todo["id"] == todo_id:  # Match by ID
+            removed = todos.pop(i)  # Remove from list
+            save_todos(todos)  # Save changes
+            return {"message": "Todo deleted", "todo": removed}  # Return removed item
+    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
+
