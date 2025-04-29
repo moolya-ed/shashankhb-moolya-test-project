@@ -64,10 +64,10 @@ def get_todo(todos):
                 print(json.dumps(todo, indent=4))
                 logging.info(f"Viewed todo: {id_to_view}")
                 return
-        print("❌ Invalid ID. Kindly enter a valid one.")
+        print(" Invalid ID. Kindly enter a valid one.")
 
 def update_todo(todos):
-    print("4️⃣ Updating a Todo...")
+    print(" Updating a Todo...")
     while True:
         id_to_update = input("Enter ID of the todo to update: ").strip()
         for todo in todos:
@@ -78,13 +78,13 @@ def update_todo(todos):
                 todo["description"] = description
                 display_todos(todos, "📋 Updated Todos after update:")
                 save_todos(todos)
-                print("✅ Todos have been saved.")
+                print(" Todos have been saved.")
                 logging.info(f"Updated todo: {id_to_update}")
                 return
-        print("❌ Invalid ID. Kindly enter a valid one.")
+        print(" Invalid ID. Kindly enter a valid one.")
 
 def remove_todo(todos):
-    print("5️⃣ Removing a Todo...")
+    print("5Removing a Todo...")
     while True:
         id_to_remove = input("Enter ID of the todo to remove: ").strip()
         for i, todo in enumerate(todos):
@@ -92,14 +92,14 @@ def remove_todo(todos):
                 removed = todos.pop(i)
                 display_todos(todos, "📋 Updated Todos after removal:")
                 save_todos(todos)
-                print("✅ Todos have been saved.")
+                print("Todos have been saved.")
                 logging.info(f"Removed todo: {id_to_remove}")
                 return
-        print("❌ Invalid ID. Kindly enter a valid one.")
+        print(" Invalid ID. Kindly enter a valid one.")
 
 if __name__ == "__main__":
     print("=== TODO MANAGER EXECUTION ===")
-    print("1️⃣ Loading Todos...\n")
+    print("1 Loading Todos...\n")
     todos = load_todos()
     display_todos(todos)
 
