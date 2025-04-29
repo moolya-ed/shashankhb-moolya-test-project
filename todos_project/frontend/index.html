@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo Manager</title>
     <style>
+        /* Basic reset and font settings for the body */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -13,12 +15,14 @@
             box-sizing: border-box;
         }
 
+        /* Header styling */
         h1 {
             text-align: center;
             color: #333;
             margin-top: 20px;
         }
 
+        /* Container that holds all sections of the page */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -29,12 +33,14 @@
             margin-top: 40px;
         }
 
+        /* Title for each section */
         .section-title {
             font-size: 24px;
             color: #00796b;
             margin-bottom: 10px;
         }
 
+        /* Styling for input fields */
         .input-field {
             width: 100%;
             padding: 12px;
@@ -45,6 +51,7 @@
             background-color: #f9f9f9;
         }
 
+        /* Button styling */
         .button {
             background-color: #00796b;
             color: white;
@@ -56,10 +63,12 @@
             margin-top: 10px;
         }
 
+        /* Button hover effect */
         .button:hover {
             background-color: #004d40;
         }
 
+        /* Todo list container styling */
         .todo-list {
             margin-top: 20px;
             padding: 10px;
@@ -68,15 +77,18 @@
             border: 1px solid #ddd;
         }
 
+        /* Each individual todo item styling */
         .todo-item {
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
 
+        /* Remove bottom border for the last item */
         .todo-item:last-child {
             border-bottom: none;
         }
 
+        /* Notification for saved changes */
         .notification {
             background-color: #4caf50;
             color: white;
@@ -88,6 +100,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>Todo Manager</h1>
@@ -96,8 +109,10 @@
         <!-- Add Todo Section -->
         <div class="section">
             <h2 class="section-title">Add Todo</h2>
+            <!-- Inputs for title and description -->
             <input type="text" id="addTitle" class="input-field" placeholder="Title"><br>
             <input type="text" id="addDescription" class="input-field" placeholder="Description"><br>
+            <!-- Add Todo button -->
             <button class="button" onclick="addTodo()">Add Todo</button>
         </div>
 
@@ -106,14 +121,18 @@
         <!-- Update Todo Section -->
         <div class="section">
             <h2 class="section-title">Update Todo</h2>
+            <!-- Input for Todo ID -->
             <input type="text" id="updateTodoId" class="input-field" placeholder="Todo ID"><br>
+            <!-- Button to show update fields -->
             <button class="button" onclick="showUpdateFields()">Show Update Fields</button><br>
 
             <div id="updateFields" style="display:none;">
+                <!-- Input fields for title, description, and done status -->
                 <input type="text" id="updateTitle" class="input-field" placeholder="New Title"><br>
                 <input type="text" id="updateDescription" class="input-field" placeholder="New Description"><br>
                 <label for="updateDoneStatus">Done Status (true/false):</label>
                 <input type="text" id="updateDoneStatus" class="input-field" placeholder="true/false"><br>
+                <!-- Button to update Todo -->
                 <button class="button" onclick="updateTodo()">Update Todo</button>
             </div>
         </div>
@@ -123,9 +142,12 @@
         <!-- View Todo by ID Section -->
         <div class="section">
             <h2 class="section-title">View Todo by ID</h2>
+            <!-- Input for Todo ID -->
             <input type="text" id="viewTodoId" class="input-field" placeholder="Todo ID"><br>
+            <!-- Button to fetch Todo details by ID -->
             <button class="button" onclick="viewTodoById()">View Todo</button><br>
 
+            <!-- Section to display Todo result -->
             <div id="viewTodoResult"></div>
         </div>
 
@@ -134,7 +156,9 @@
         <!-- Delete Todo Section -->
         <div class="section">
             <h2 class="section-title">Delete Todo</h2>
+            <!-- Input for Todo ID to delete -->
             <input type="text" id="deleteTodoId" class="input-field" placeholder="Todo ID"><br>
+            <!-- Button to delete Todo -->
             <button class="button" onclick="deleteTodo()">Delete Todo</button>
         </div>
 
@@ -150,8 +174,10 @@
         <!-- View All Todos Section -->
         <div class="section">
             <h2 class="section-title">View All Todos</h2>
+            <!-- Button to fetch and display all Todos -->
             <button class="button" onclick="viewAllTodos()">View All Todos</button>
 
+            <!-- Container to display list of Todos -->
             <div id="todosList" class="todo-list"></div>
         </div>
 
@@ -162,16 +188,19 @@
     </div>
 
     <script>
+        // API URL for backend
         const apiUrl = "http://127.0.0.1:8000";
         let todos = [];
-        const TODOS_PER_PAGE = 8;
-        let currentPage = 1;
+        const TODOS_PER_PAGE = 8; // Number of todos per page
+        let currentPage = 1; // Default to first page
 
+        // Function to add a new Todo
         function addTodo() {
             const title = document.getElementById("addTitle").value;
             const description = document.getElementById("addDescription").value;
             const todo = { title, description, doneStatus: false };
 
+            // Send POST request to backend to add Todo
             fetch(`${apiUrl}/add_todo`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -180,10 +209,11 @@
             .then(response => response.json())
             .then(data => {
                 alert("Todo added successfully!");
-                viewAllTodos();
+                viewAllTodos(); // Refresh the list after adding
             });
         }
 
+        // Show the fields for updating a Todo
         function showUpdateFields() {
             const todoId = document.getElementById("updateTodoId").value;
             if (todoId) {
@@ -193,6 +223,7 @@
             }
         }
 
+        // Function to update a Todo
         function updateTodo() {
             const id = document.getElementById("updateTodoId").value;
             const title = document.getElementById("updateTitle").value;
@@ -200,6 +231,7 @@
             const doneStatus = document.getElementById("updateDoneStatus").value.toLowerCase() === "true";
             const updatedTodo = { title, description, doneStatus };
 
+            // Send PUT request to backend to update Todo
             fetch(`${apiUrl}/update_todo/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -208,10 +240,11 @@
             .then(response => response.json())
             .then(data => {
                 alert("Todo updated successfully!");
-                viewAllTodos();
+                viewAllTodos(); // Refresh the list after update
             });
         }
 
+        // Function to view a Todo by ID
         function viewTodoById() {
             const todoId = document.getElementById("viewTodoId").value;
             fetch(`${apiUrl}/todo/${todoId}`)
@@ -232,6 +265,7 @@
             });
         }
 
+        // Function to delete a Todo by ID
         function deleteTodo() {
             const todoId = document.getElementById("deleteTodoId").value;
             fetch(`${apiUrl}/remove_todo/${todoId}`, {
@@ -240,24 +274,27 @@
             .then(response => response.json())
             .then(data => {
                 alert("Todo deleted successfully!");
-                viewAllTodos();
+                viewAllTodos(); // Refresh the list after deletion
             });
         }
 
+        // Function to simulate saving changes
         function saveChanges() {
             console.log('Save Changes button clicked');
-            showNotification();
+            showNotification(); // Show notification after saving changes
         }
 
+        // Function to show a success notification
         function showNotification() {
             console.log('Showing notification');
             const notification = document.getElementById("notification");
             notification.style.display = "block";
             setTimeout(() => {
-                notification.style.display = "none";
+                notification.style.display = "none"; // Hide after 2 seconds
             }, 2000);
         }
 
+        // Function to paginate the todos list
         function paginateTodos(page = 1) {
             currentPage = page;
             const todosList = document.getElementById("todosList");
@@ -278,9 +315,10 @@
                 `;
             });
 
-            renderPagination();
+            renderPagination(); // Render pagination buttons
         }
 
+        // Function to render pagination buttons
         function renderPagination() {
             const totalPages = Math.ceil(todos.length / TODOS_PER_PAGE);
             let paginationHtml = `<div style="text-align:center; margin-top:20px;">`;
@@ -293,15 +331,17 @@
             document.getElementById("todosList").innerHTML += paginationHtml;
         }
 
+        // Function to view all Todos and paginate them
         function viewAllTodos() {
             fetch(`${apiUrl}/todos`)
             .then(response => response.json())
             .then(data => {
                 todos = data;
-                paginateTodos(1);
+                paginateTodos(1); // Display the first page
             });
         }
     </script>
 
 </body>
+
 </html>
