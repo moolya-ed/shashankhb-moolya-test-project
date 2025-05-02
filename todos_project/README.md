@@ -123,6 +123,7 @@ Unit tests are written for the core functions using Python's unittest framework 
     To run the tests:
 
     python -m unittest discover tests
+The architectuire i have implemented is MVC
 
 Contributing
 
