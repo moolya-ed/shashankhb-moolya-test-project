@@ -1,0 +1,21 @@
+# FastAPI and backend
+fastapi==0.110.1
+uvicorn==0.29.0
+pydantic==2.7.1
+
+# HTTP client for testing
+httpx==0.27.0
+
+# CLI / API interaction
+requests==2.32.3
+
+# Linting and code quality
+flake8==7.1.2
+pyflakes==3.2.0
+pycodestyle==2.12.1
+
+# Optional: for SSL and compatibility
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
+urllib3==2.2.3
