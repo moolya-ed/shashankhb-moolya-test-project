@@ -1,0 +1,27 @@
+# CLI and backend logic
+uvicorn==0.29.0
+fastapi==0.110.1
+pydantic==2.7.1
+
+# Existing dependencies (from your current list)
+blinker==1.8.2
+certifi==2025.1.31
+charset-normalizer==3.4.1
+click==8.1.8
+flake8==7.1.2
+Flask==3.0.3
+idna==3.10
+importlib_metadata==8.5.0
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==2.1.5
+mccabe==0.7.0
+pkg_resources==0.0.0
+pycodestyle==2.12.1
+pyflakes==3.2.0
+requests==2.32.3
+urllib3==2.2.3
+Werkzeug==3.0.6
+zipp==3.20.2
+pytest==8.2.0
+httpx==0.27.0
