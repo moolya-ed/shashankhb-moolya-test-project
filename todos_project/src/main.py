@@ -1,101 +1,128 @@
-from fastapi import FastAPI, HTTPException  # Import FastAPI framework and HTTP error handling
-from fastapi.middleware.cors import CORSMiddleware  # Import CORS middleware
-from pydantic import BaseModel, Field  # For request validation
-from typing import Optional  # Allow optional fields in models
-import uuid  # Used to generate unique IDs
-import json  # Used for file I/O
-import os  # Used for file path operations
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from typing import Optional
+import uuid
+import json
+import os
+import logging
 
-# Create FastAPI instance
+#  Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("todo_api.log"),  # Log file
+        logging.StreamHandler()              # Console output
+    ]
+)
+logger = logging.getLogger(__name__)
+
+#  FastAPI instance
 app = FastAPI()
 
-# Set file path to JSON file storing todos
+#  File path for storing todos
 FILE_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "todos.json")
-FILE_PATH = os.path.abspath(FILE_PATH)  # Convert to absolute path
+FILE_PATH = os.path.abspath(FILE_PATH)
 
-# Enable CORS to allow frontend or external tools like Postman to access the API
+#  Enable CORS (for frontend or Postman use)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow requests from all origins
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"]  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
-# Define data model using Pydantic for validation
+#  Define the data model
 class Todo(BaseModel):
-    title: str  # Title is required
-    description: str  # Description is required
-    doneStatus: bool = False  # Default status is False
-    id: Optional[str] = Field(default=None)  # ID is optional; generated if not provided
+    title: str
+    description: str
+    doneStatus: bool = False
+    id: Optional[str] = Field(default=None)
 
-# Load todos from file
+#  Load todos from JSON file
 def load_todos():
-    if not os.path.exists(FILE_PATH):  # If file doesn't exist, return empty list
+    if not os.path.exists(FILE_PATH):
+        logger.info("Todos file not found. Returning empty list.")
         return []
-    with open(FILE_PATH, "r") as f:  # Open file in read mode
-        return json.load(f)  # Return loaded list
+    with open(FILE_PATH, "r") as f:
+        todos = json.load(f)
+        logger.info(f"Loaded todos: {todos}")
+        return todos
 
-# Save todos to file
+#  Save todos to JSON file
 def save_todos(todos):
-    print("Saving todos:", todos)  # Debug print for visibility
-    with open(FILE_PATH, "w") as f:  # Open file in write mode
-        json.dump(todos, f, indent=4)  # Save todos as pretty JSON
+    logger.info(f"Saving todos: {todos}")
+    with open(FILE_PATH, "w") as f:
+        json.dump(todos, f, indent=4)
 
-# Home route to verify API is running
+#  Home route
 @app.get("/")
 def read_root():
-    return {"message": "✅ API is running!"}  # Health check
+    logger.info("Root endpoint hit")
+    return {"message": "✅ API is running!"}
 
-# Get all todos
+# 1️⃣ Get all todos
 @app.get("/todos")
 def get_all_todos():
-    return load_todos()  # Return list of todos
+    logger.info("Fetching all todos")
+    return load_todos()
 
-# Get a single todo by ID
+# 2️⃣ Get one todo by ID
 @app.get("/todo/{todo_id}")
 def get_todo(todo_id: str):
-    todos = load_todos()  # Load all todos
+    logger.info(f"Fetching todo with ID: {todo_id}")
+    todos = load_todos()
     for todo in todos:
-        if todo["id"] == todo_id:  # Match by ID
+        if todo["id"] == todo_id:
             return todo
-    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
+    logger.warning(f"Todo with ID {todo_id} not found")
+    raise HTTPException(status_code=404, detail="Todo not found")
 
-# Add a new todo
+# 3️⃣ Add a new todo
 @app.post("/add_todo")
 def add_todo(todo: Todo):
+    logger.info(f"Attempting to add new todo: {todo.dict()}")
     todos = load_todos()
-    # Check for duplicate todo by title and description
     for existing in todos:
         if existing["title"] == todo.title and existing["description"] == todo.description:
+            logger.warning("Duplicate todo detected")
             raise HTTPException(status_code=400, detail="Todo with the same title and description already exists.")
-    todo.id = todo.id or uuid.uuid4().hex  # Generate ID if not provided
-    todos.append(todo.dict())  # Add to list as dict
-    save_todos(todos)  # Save to file
-    return {"message": "Todo added successfully", "todo": todo}  # Return response
+    todo.id = todo.id or uuid.uuid4().hex
+    todos.append(todo.dict())
+    save_todos(todos)
+    logger.info(f"Todo added successfully: {todo.dict()}")
+    return {"message": "Todo added successfully", "todo": todo}
 
-# Update existing todo
+# 4️⃣ Update an existing todo
 @app.put("/update_todo/{todo_id}")
 def update_todo(todo_id: str, updated: Todo):
+    logger.info(f"Updating todo with ID: {todo_id}")
     todos = load_todos()
     for todo in todos:
-        if todo["id"] == todo_id:  # Match by ID
-            # Update fields
+        if todo["id"] == todo_id:
             todo["title"] = updated.title
             todo["description"] = updated.description
             todo["doneStatus"] = updated.doneStatus
-            save_todos(todos)  # Save updated list
+            save_todos(todos)  # Save updated todos back to the file
+            logger.info(f"Todo updated: {todo}")
             return {"message": "Todo updated", "todo": todo}
-    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
+    logger.warning(f"Todo with ID {todo_id} not found for update")
+    raise HTTPException(status_code=404, detail="Todo not found")
 
-# Delete a todo
+# 5️⃣ Delete a todo
 @app.delete("/remove_todo/{todo_id}")
 def delete_todo(todo_id: str):
+    logger.info(f"Attempting to delete todo with ID: {todo_id}")
     todos = load_todos()
     for i, todo in enumerate(todos):
-        if todo["id"] == todo_id:  # Match by ID
-            removed = todos.pop(i)  # Remove from list
-            save_todos(todos)  # Save changes
-            return {"message": "Todo deleted", "todo": removed}  # Return removed item
-    raise HTTPException(status_code=404, detail="Todo not found")  # If not found
+        if todo["id"] == todo_id:
+            removed = todos.pop(i)
+            save_todos(todos)
+            logger.info(f"Todo deleted: {removed}")
+            return {"message": "Todo deleted", "todo": removed}
+    logger.warning(f"Todo with ID {todo_id} not found for deletion")
+    raise HTTPException(status_code=404, detail="Todo not found")
+
 
