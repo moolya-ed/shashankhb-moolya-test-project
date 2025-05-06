@@ -35,14 +35,14 @@ def save_todos(todos):
         json.dump(todos, f, indent=4)
     logging.info("Todos saved successfully.")
 
-def display_todos(todos, message="📋 Current Todos:"):
+def display_todos(todos, message=" Current Todos:"):
     """Display todos to the console"""
     print(f"\n{message}")
     print(json.dumps(todos, indent=4))
 
 def add_todo(todos):
     """Add a new Todo to the list"""
-    print("2️⃣ Adding a Todo...")
+    print("Adding a Todo...")
     title = input("Enter title: ")
     description = input("Enter description: ")
     new_todo = {
@@ -54,7 +54,7 @@ def add_todo(todos):
     todos.append(new_todo)
     display_todos(todos, " Updated Todos after addition:")
     save_todos(todos)
-    print("✅ Todos have been saved.")
+    print("Todos have been saved.")
     logging.info(f"Added new todo: {new_todo['id']}")
 
 def get_todo(todos):
@@ -67,7 +67,7 @@ def get_todo(todos):
                 print(json.dumps(todo, indent=4))
                 logging.info(f"Viewed todo: {id_to_view}")
                 return
-        print("❌ Invalid ID. Kindly enter a valid one.")
+        print(" Invalid ID. Kindly enter a valid one.")
 
 def update_todo(todos):
     """Update an existing todo by ID"""
@@ -103,17 +103,17 @@ def remove_todo(todos):
         for i, todo in enumerate(todos):
             if todo["id"] == id_to_remove:
                 removed = todos.pop(i)
-                display_todos(todos, "📋 Updated Todos after removal:")
+                display_todos(todos, " Updated Todos after removal:")
                 save_todos(todos)
-                print("✅ Todos have been saved.")
+                print(" Todos have been saved.")
                 logging.info(f"Removed todo: {id_to_remove}")
                 return
-        print("❌ Invalid ID. Kindly enter a valid one.")
+        print(" Invalid ID. Kindly enter a valid one.")
 
 if __name__ == "__main__":
     """Main execution for adding, viewing, updating, and removing todos"""
     print("=== TODO MANAGER EXECUTION ===")
-    print("1️⃣ Loading Todos...\n")
+    print("1️Loading Todos...\n")
     todos = load_todos()
     display_todos(todos)
 
