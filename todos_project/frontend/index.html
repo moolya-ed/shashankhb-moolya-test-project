@@ -200,6 +200,8 @@
             const description = document.getElementById("addDescription").value;
             const todo = { title, description, doneStatus: false };
 
+            console.log("Adding Todo:", todo);  // Logging the todo being added
+
             // Send POST request to backend to add Todo
             fetch(`${apiUrl}/add_todo`, {
                 method: "POST",
@@ -208,8 +210,12 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log("Todo added response:", data);  // Logging the response data
                 alert("Todo added successfully!");
                 viewAllTodos(); // Refresh the list after adding
+            })
+            .catch(error => {
+                console.error("Error adding Todo:", error);  // Logging any errors
             });
         }
 
@@ -217,6 +223,7 @@
         function showUpdateFields() {
             const todoId = document.getElementById("updateTodoId").value;
             if (todoId) {
+                console.log(`Showing update fields for Todo ID: ${todoId}`);  // Logging the Todo ID being updated
                 document.getElementById("updateFields").style.display = "block";
             } else {
                 alert("Please enter a valid Todo ID.");
@@ -231,6 +238,8 @@
             const doneStatus = document.getElementById("updateDoneStatus").value.toLowerCase() === "true";
             const updatedTodo = { title, description, doneStatus };
 
+            console.log(`Updating Todo with ID: ${id}`, updatedTodo);  // Logging the update action
+
             // Send PUT request to backend to update Todo
             fetch(`${apiUrl}/update_todo/${id}`, {
                 method: "PUT",
@@ -239,17 +248,25 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log("Todo updated response:", data);  // Logging the response data
                 alert("Todo updated successfully!");
                 viewAllTodos(); // Refresh the list after update
+            })
+            .catch(error => {
+                console.error("Error updating Todo:", error);  // Logging any errors
             });
         }
 
         // Function to view a Todo by ID
         function viewTodoById() {
             const todoId = document.getElementById("viewTodoId").value;
+
+            console.log(`Fetching Todo with ID: ${todoId}`);  // Logging the Todo ID being fetched
+
             fetch(`${apiUrl}/todo/${todoId}`)
             .then(response => response.json())
             .then(data => {
+                console.log("Fetched Todo:", data);  // Logging the fetched Todo data
                 if (data) {
                     document.getElementById("viewTodoResult").innerHTML = `
                         <h3>Todo Details:</h3>
@@ -261,6 +278,7 @@
                 }
             })
             .catch(error => {
+                console.error("Error fetching Todo:", error);  // Logging any errors
                 document.getElementById("viewTodoResult").innerHTML = "Todo not found.";
             });
         }
@@ -268,44 +286,49 @@
         // Function to delete a Todo by ID
         function deleteTodo() {
             const todoId = document.getElementById("deleteTodoId").value;
+
+            console.log(`Deleting Todo with ID: ${todoId}`);  // Logging the Todo ID being deleted
+
             fetch(`${apiUrl}/remove_todo/${todoId}`, {
                 method: "DELETE"
             })
             .then(response => response.json())
             .then(data => {
+                console.log("Todo deleted response:", data);  // Logging the response data
                 alert("Todo deleted successfully!");
-                viewAllTodos(); // Refresh the list after deletion
+                viewAllTodos(); // Refresh the list after deleting
+            })
+            .catch(error => {
+                console.error("Error deleting Todo:", error);  // Logging any errors
             });
         }
 
-        // Function to simulate saving changes
-        function saveChanges() {
-            console.log('Save Changes button clicked');
-            showNotification(); // Show notification after saving changes
+        // Function to view all Todos
+        function viewAllTodos() {
+            console.log("Fetching all Todos...");  // Logging the action to fetch all Todos
+
+            fetch(`${apiUrl}/todos`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched Todos:", data);  // Logging the fetched Todos
+                todos = data;
+                paginateTodos(1); // Display the first page
+            })
+            .catch(error => {
+                console.error("Error fetching all Todos:", error);  // Logging any errors
+            });
         }
 
-        // Function to show a success notification
-        function showNotification() {
-            console.log('Showing notification');
-            const notification = document.getElementById("notification");
-            notification.style.display = "block";
-            setTimeout(() => {
-                notification.style.display = "none"; // Hide after 2 seconds
-            }, 2000);
-        }
-
-        // Function to paginate the todos list
-        function paginateTodos(page = 1) {
+        // Function to paginate the Todos
+        function paginateTodos(page) {
             currentPage = page;
-            const todosList = document.getElementById("todosList");
-            todosList.innerHTML = "";
-
-            const start = (page - 1) * TODOS_PER_PAGE;
+            const start = (currentPage - 1) * TODOS_PER_PAGE;
             const end = start + TODOS_PER_PAGE;
-            const paginatedTodos = todos.slice(start, end);
+            const todosToDisplay = todos.slice(start, end);
 
-            paginatedTodos.forEach(todo => {
-                todosList.innerHTML += `
+            let todoListHtml = "";
+            todosToDisplay.forEach(todo => {
+                todoListHtml += `
                     <div class="todo-item">
                         <p><strong>ID:</strong> ${todo.id}</p>
                         <p><strong>Title:</strong> ${todo.title}</p>
@@ -315,33 +338,19 @@
                 `;
             });
 
-            renderPagination(); // Render pagination buttons
+            document.getElementById("todosList").innerHTML = todoListHtml;
         }
 
-        // Function to render pagination buttons
-        function renderPagination() {
-            const totalPages = Math.ceil(todos.length / TODOS_PER_PAGE);
-            let paginationHtml = `<div style="text-align:center; margin-top:20px;">`;
-
-            for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button onclick="paginateTodos(${i})" class="button" style="margin: 0 5px; background-color: ${i === currentPage ? '#004d40' : '#00796b'}">${i}</button>`;
-            }
-
-            paginationHtml += `</div>`;
-            document.getElementById("todosList").innerHTML += paginationHtml;
-        }
-
-        // Function to view all Todos and paginate them
-        function viewAllTodos() {
-            fetch(`${apiUrl}/todos`)
-            .then(response => response.json())
-            .then(data => {
-                todos = data;
-                paginateTodos(1); // Display the first page
-            });
+        // Save changes function (just to demonstrate the example)
+        function saveChanges() {
+            console.log("Saving changes...");  // Logging the save action
+            document.getElementById("notification").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("notification").style.display = "none";
+            }, 2000);
         }
     </script>
-
 </body>
 
 </html>
+
